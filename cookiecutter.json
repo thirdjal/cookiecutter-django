@@ -1,0 +1,15 @@
+{
+  "project": "Django Project",
+  "slug": "{{ cookiecutter.project.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
+  "description": "A super awesome Django project.",
+  "author": "John Lawrence",
+  "email": "john@cjvn.net",
+  "license": [
+    "MIT",
+    "BSD",
+    "GPLv3",
+    "Apache Software License 2.0",
+    "Not open source"
+  ],
+  "version": "0.1.0"
+}

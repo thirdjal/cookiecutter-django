@@ -1,0 +1,5 @@
+django[argon2]
+django-environ
+docutils
+pillow
+whitenoise[brotli]
