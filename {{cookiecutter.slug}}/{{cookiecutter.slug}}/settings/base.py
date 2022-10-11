@@ -1,5 +1,5 @@
 """
-Django settings for {{ cookiecutter.project }}.
+Django settings for {{cookiecutter.project}}.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/stable/topics/settings/
@@ -16,7 +16,7 @@ from environ import Env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-APP_DIR = BASE_DIR / "{{ cookiecutter.slug }}"
+APP_DIR = BASE_DIR / "{{cookiecutter.slug}}"
 
 
 # 12factor
@@ -41,8 +41,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # {{ cookiecutter.project }}
-    "{{ cookiecutter.slug }}.members",
+    # Third-party
+    "widget_tweaks",
+    # {{cookiecutter.project}}
+    "{{cookiecutter.slug}}.members",
 ]
 
 MIDDLEWARE = [
@@ -57,7 +59,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "{{ cookiecutter.slug }}.urls"
+ROOT_URLCONF = "{{cookiecutter.slug}}.urls"
 
 TEMPLATES = [
     {
@@ -75,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "{{ cookiecutter.slug }}.wsgi.application"
+WSGI_APPLICATION = "{{cookiecutter.slug}}.wsgi.application"
 
 
 # Database
