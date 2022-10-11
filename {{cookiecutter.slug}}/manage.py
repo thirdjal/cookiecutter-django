@@ -13,9 +13,9 @@ def main():
         command = "help"
 
     if command == "test":
-        default = "{{ cookiecutter.slug }}.settings.test"
+        default = "{{cookiecutter.slug}}.settings.test"
     else:
-        default = "{{ cookiecutter.slug }}.settings.local"
+        default = "{{cookiecutter.slug}}.settings.local"
 
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", default)
     try:
