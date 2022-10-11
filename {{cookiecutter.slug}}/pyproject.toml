@@ -1,11 +1,11 @@
 [project]
-name = "{{ cookiecutter.project }}"
-description = "{{ cookiecutter.description }}"
-version = "{{ cookiecutter.version }}"
+name = "{{cookiecutter.project }}"
+description = "{{cookiecutter.description}}"
+version = "{{cookiecutter.version}}"
 authors = [
-  "{{ cookiecutter.author }} <{{ cookiecutter.email }}>",
+  "{{cookiecutter.author}} <{{cookiecutter.email}}>",
 ]
-license = "{{ cookiecutter.license }}"
+license = "{{cookiecutter.license}}"
 readme = "README.md"
 requires-python = ">=3.9"
 
@@ -17,7 +17,7 @@ target-version = ["py39"]
 profile = "black"
 extend_skip = "migrations"
 known_django = "django"
-known_first_party = "{{ cookiecutter.slug }}"
+known_first_party = "{{cookiecutter.slug}}"
 sections = [
   "FUTURE",
   "STDLIB",
