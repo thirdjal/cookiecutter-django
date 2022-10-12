@@ -34,8 +34,8 @@ urlpatterns = [
     path("admindocs/", include("django.contrib.admindocs.urls")),
     path("admin/", admin.site.urls),
     # {{cookiecutter.project}}
-    path("", TemplateView.as_view(template_name="core/index.html", name="home")),
-    path("about/", TemplateView.as_view(template_name="core/about.html", name="about")),
+    path("", TemplateView.as_view(template_name="index.html"), name="home"),
+    path("about/", TemplateView.as_view(template_name="about.html"), name="about"),
     path("members/", include("{{cookiecutter.slug}}.members.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
