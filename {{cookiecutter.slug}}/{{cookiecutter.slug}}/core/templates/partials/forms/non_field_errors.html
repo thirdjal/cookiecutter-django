@@ -1,6 +1,6 @@
 {%raw%}{% if form.non_field_errors %}
   <div class="alert alert-danger">
-    <ul class="list-unstyled">
+    <ul class="list-unstyled mb-0">
       {% for error in form.non_field_errors %}
         <li>{{ error|escape }}</li>
       {% endfor %}
