@@ -7,7 +7,7 @@ from django.db import models
 from django.utils.text import capfirst
 from django.utils.translation import gettext as _
 
-from .managers import MemberManager
+from {{cookiecutter.slug}}.members.managers import MemberManager
 
 
 class Member(AbstractUser):

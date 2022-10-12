@@ -4,7 +4,7 @@ from django.contrib.auth.forms import (
     UserCreationForm,
 )
 
-from .models import Member
+from {{cookiecutter.slug}}.members.models import Member
 
 
 class MemberCreationForm(UserCreationForm):

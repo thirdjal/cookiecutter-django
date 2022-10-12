@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .forms import MemberChangeForm, MemberCreationForm
-from .models import Member
+from {{cookiecutter.slug}}.members.forms import MemberChangeForm, MemberCreationForm
+from {{cookiecutter.slug}}.members.models import Member
 
 
 @admin.register(Member)
