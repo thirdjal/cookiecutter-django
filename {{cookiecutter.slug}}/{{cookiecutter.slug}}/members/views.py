@@ -1,4 +1,5 @@
 from django.contrib.auth import views as auth_views
+
 from {{cookiecutter.slug}}.members.forms import MemberAuthenticationForm
 
 
