@@ -1,11 +1,11 @@
-{% raw %}{% extends 'base.html' %}
+{%raw%}{% extends 'base.html' %}
 
 {% load i18n widget_tweaks %}
 
 {% block title %}{% translate 'Login' %} | {{ block.super }}{% endblock title %}
 
 {% block content %}
-  <main class="container d-flex justify-center align-center">
+  <main class="container d-flex justify-content-center align-items-center">
     <div class="card">
       <div class="card-body">
         {% with WIDGET_ERROR_CLASS="is_invalid" %}
@@ -38,4 +38,4 @@
       </div>
     </div>
   </main>
-{% endblock content %}{% -endraw %}
+{% endblock content %}{%-endraw%}
