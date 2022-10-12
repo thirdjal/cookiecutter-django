@@ -9,10 +9,28 @@
     <div class="collapse navbar-collapse" id="navbarContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">{% translate 'Home' %}</a>
+          <a href="{% url 'home' %}"
+          {% if request.resolver_match.url_name == "home" %}
+             class="nav-link active"
+             aria-current="page"
+            {% else %}
+             class="nav-link"
+            {% endif %}
+          >
+            {% translate 'Home' %}
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'about' %}">{% translate 'About' %}</a>
+          <a href="{% url 'about' %}"
+            {% if request.resolver_match.url_name == "about" %}
+             class="nav-link active"
+             aria-current="page"
+            {% else %}
+             class="nav-link"
+            {% endif %}
+          >
+            {% translate 'About' %}
+          </a>
         </li>
       </ul>
       <ul class="navbar-nav" id="user-menu">
@@ -30,7 +48,7 @@
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="user-menu-toggle">
           {% if request.user.is_authenticated %}
             <li>
-              <a href="#" class="dropdown-item d-flex align-items-center">
+              <a href="{% url 'auth:password_change' %}" class="dropdown-item d-flex align-items-center">
                 <i class="bi-key-fill"></i>
                 <span class="ms-3">{% translate 'Update password' %}</span>
               </a>
@@ -47,13 +65,16 @@
               <hr class="dropdown-divider">
             </li>
             <li>
-              <a href="{% url 'logout' %}" class="dropdown-item d-flex align-items-center text-danger">
-                <i class="bi-box-arrow-right"></i>
-                <span class="ms-3">{% translate 'Logout' %}</span>
-              </a>
+              <form action="{% url 'auth:logout' %}" method="post" class="dropdown-item">
+                <button type="submit" class="text-danger">
+                  <i class="bi-box-arrow-right"></i>
+                  <span class="ms-3">{% translate 'Logout' %}</span>
+                </button>
+                {% csrf_token %}
+              </form>
             </li>
           {% else %}
-            <form method="post" action="{% url 'members:login' %}" class="px-4 py-3" id="navbar-signin">
+            <form action="{% url 'auth:login' %}" method="post" class="login-form" id="navbar-signin">
               <fieldset>
                 <div class="form-floating">
                   <input type="text"
@@ -82,12 +103,10 @@
               </fieldset>
               {% csrf_token %}
               <input type="hidden" name="next" value="{{ request.path }}">
-            <div class="mt-4">
               <button type="submit" class="btn btn-primary w-100">{% translate 'Sign in' %}</button>
-            </div>
           </form>
         <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item px-4">
+        <a href="{% url 'auth:password_reset' %}" class="dropdown-item px-4">
           <small>{% translate 'Forgot your password?' %}</small>
         </a>
         <a href="#" class="dropdown-item px-4">

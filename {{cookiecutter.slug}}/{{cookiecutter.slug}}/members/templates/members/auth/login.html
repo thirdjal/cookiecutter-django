@@ -4,17 +4,12 @@
 
 {% block title %}{% translate 'Login' %} | {{ block.super }}{% endblock title %}
 
-{% block css %}
-  {{ block.super }}
-  <link rel="stylesheet" href="{% static 'css/login.css' %}">
-{% endblock %}
-
 {% block content %}
   <main class="container d-flex justify-content-center align-items-center">
     <div class="card">
       <div class="card-body">
         {% with WIDGET_ERROR_CLASS="is_invalid" %}
-          <form action="{% url 'members:login' %}" method="post" class="login-form">
+          <form action="{% url 'auth:login' %}" method="post" class="login-form">
             <h1 class="card-title text-center">{% translate 'Please sign in' %}</h1>
             {% include 'partials/forms/non_field_errors.html' %}
             <div class="form-floating">
@@ -36,8 +31,8 @@
       </div>
       <div class="card-footer">
         <div class="small">
+          <a href="{% url 'auth:password_reset' %}">{% translate "Forgot your password?" %}</a> |
           {# TODO: Put the actual URLs in here #}
-          <a href="#">{% translate "Forgot your password?" %}</a> |
           <a href="#">{% translate "Not yet a member?" %}</a>
         </div>
       </div>
