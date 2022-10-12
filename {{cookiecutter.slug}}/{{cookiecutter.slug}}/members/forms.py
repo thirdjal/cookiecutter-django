@@ -1,4 +1,8 @@
-from django.contrib.auth.forms import UserChangeForm, UserCreationForm
+from django.contrib.auth.forms import (
+    AuthenticationForm,
+    UserChangeForm,
+    UserCreationForm,
+)
 
 from .models import Member
 
@@ -11,3 +15,7 @@ class MemberCreationForm(UserCreationForm):
 class MemberChangeForm(UserChangeForm):
     class Meta(UserChangeForm.Meta):
         model = Member
+
+
+class MemberAuthenticationForm(AuthenticationForm):
+    pass

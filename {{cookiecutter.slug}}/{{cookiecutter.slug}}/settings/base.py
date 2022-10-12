@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # Third-party
     "widget_tweaks",
     # {{cookiecutter.project}}
+    "{{cookiecutter.slug}}.core",
     "{{cookiecutter.slug}}.members",
 ]
 
@@ -64,7 +65,7 @@ ROOT_URLCONF = "{{cookiecutter.slug}}.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [APP_DIR / "templates"],
+        "DIRS": [],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -130,6 +131,7 @@ PASSWORD_HASHERS = [
 # https://docs.djangoproject.com/en/stable/topics/auth/customizing/#substituting-a-custom-user-model
 
 AUTH_USER_MODEL = "members.Member"
+LOGIN_URL = "members:login"
 
 
 # Internationalization
@@ -153,7 +155,6 @@ USE_TZ = True
 STATIC_HOST = env("DJANGO_STATIC_HOST", default="")
 STATIC_ROOT = env("DJANGO_STATIC_ROOT", default=BASE_DIR / "static_files")
 STATIC_URL = f"{STATIC_HOST}/static/"
-STATICFILES_DIRS = [APP_DIR / "static"]
 # https://whitenoise.evans.io/en/latest/django.html#add-compression-and-caching-support
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 

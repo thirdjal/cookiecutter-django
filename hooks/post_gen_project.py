@@ -4,7 +4,7 @@ import os
 
 PROJECT_SLUG = "{{ cookiecutter.slug }}"
 NODE_DIR = "node_modules"
-STATIC_DIR = os.path.join(PROJECT_SLUG, "static")
+STATIC_DIR = os.path.join(PROJECT_SLUG, "core", "static")
 
 WARNING = "\x1b[1;33m [WARNING]: "
 INFO = "\x1b[1;33m [INFO]: "
