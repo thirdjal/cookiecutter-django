@@ -1,13 +1,13 @@
 {%raw%}{% load i18n %}
 <!-- Begin site naviation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand" href="{% url 'home' %}">{%-endraw%}{{cookiecutter.project}}{%raw%}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="{% translate 'Toggle navigation' %}">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto">
         <li class="nav-item">
           <a href="{% url 'home' %}"
           {% if request.resolver_match.url_name == "home" %}
@@ -65,7 +65,7 @@
               <hr class="dropdown-divider">
             </li>
             <li>
-              <form action="{% url 'auth:logout' %}" method="post" class="dropdown-item">
+              <form action="{% url 'auth:logout' %}" method="post" class="dropdown-item" id="navbar-logout">
                 <button type="submit" class="text-danger">
                   <i class="bi-box-arrow-right"></i>
                   <span class="ms-3">{% translate 'Logout' %}</span>
@@ -109,7 +109,7 @@
         <a href="{% url 'auth:password_reset' %}" class="dropdown-item px-4">
           <small>{% translate 'Forgot your password?' %}</small>
         </a>
-        <a href="#" class="dropdown-item px-4">
+        <a href="{% url 'members:signup' }" class="dropdown-item px-4">
           <small>{% translate 'Need an account? Join us!' %}</small>
         </a>
       {% endif %}

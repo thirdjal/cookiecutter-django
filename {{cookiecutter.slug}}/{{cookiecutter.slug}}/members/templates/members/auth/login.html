@@ -9,7 +9,7 @@
     <div class="card">
       <div class="card-body">
         {% with WIDGET_ERROR_CLASS="is_invalid" %}
-          <form action="{% url 'auth:login' %}" method="post" class="login-form">
+          <form method="post" class="login-form">
             <h1 class="card-title text-center">{% translate 'Please sign in' %}</h1>
             {% include 'partials/forms/non_field_errors.html' %}
             <div class="form-floating">
@@ -33,7 +33,7 @@
         <div class="small">
           <a href="{% url 'auth:password_reset' %}">{% translate "Forgot your password?" %}</a> |
           {# TODO: Put the actual URLs in here #}
-          <a href="#">{% translate "Not yet a member?" %}</a>
+          <a href="{% url 'members:signup' %}">{% translate "Not yet a member?" %}</a>
         </div>
       </div>
     </div>

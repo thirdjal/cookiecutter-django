@@ -37,6 +37,7 @@ urlpatterns = [
     path("", TemplateView.as_view(template_name="index.html"), name="home"),
     path("", include("{{cookiecutter.slug}}.members.auth.urls")),
     path("about/", TemplateView.as_view(template_name="about.html"), name="about"),
+    path("members/", include("{{cookiecutter.slug}}.members.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

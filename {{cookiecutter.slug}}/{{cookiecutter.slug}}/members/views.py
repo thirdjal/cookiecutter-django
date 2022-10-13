@@ -1,12 +1,10 @@
-from django.contrib.auth import views as auth_views
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
 
-from {{cookiecutter.slug}}.members.forms import MemberAuthenticationForm
-
-
-class LoginView(auth_views.LoginView):
-    form_class = MemberAuthenticationForm
-    template_name = "members/login.html"
+from {{cookiecutter.slug}}.members.forms import MemberCreationForm
 
 
-class LogoutView(auth_views.LogoutView):
-    pass
+class SignupView(CreateView):
+    form_class = MemberCreationForm
+    template_name = "members/signup.html"
+    success_url = reverse_lazy("auth:login")
