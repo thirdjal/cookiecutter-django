@@ -30,7 +30,7 @@ def link_bootstrap():
 
     for file in files:
         os.symlink(
-            os.path.abspath(os.path.join(SOURCE_DIR, file)),
+            os.path.join(SOURCE_DIR, file),
             os.path.join(STATIC_DIR, file),
         )
 
@@ -55,7 +55,7 @@ def link_bootstrap_icons():
 
     for file in files:
         os.symlink(
-            os.path.abspath(os.path.join(SOURCE_DIR, file["src"], file["filename"])),
+            os.path.join(SOURCE_DIR, file["src"], file["filename"]),
             os.path.join(STATIC_DIR, file["dst"], file["filename"]),
         )
 
