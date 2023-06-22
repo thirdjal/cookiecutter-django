@@ -19,14 +19,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 APP_DIR = BASE_DIR / "{{cookiecutter.slug}}"
 
 
-# 12factor
-# https://www.12factor.net
+# Django-environ
 # https://django-environ.readthedocs.io/en/latest/
 
 env = Env()
-dot_env = BASE_DIR / ".env"
-if dot_env.is_file():
-    env.read_env(dot_env)
+env.read_env(BASE_DIR / ".env")
 
 
 # Application definition
@@ -102,7 +99,7 @@ CACHES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",  # noqa: E501
     },
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
@@ -124,6 +121,7 @@ PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.PBKDF2PasswordHasher",
     "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
     "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
+    "django.contrib.auth.hashers.ScryptPasswordHasher",
 ]
 
 
@@ -131,7 +129,7 @@ PASSWORD_HASHERS = [
 # https://docs.djangoproject.com/en/stable/topics/auth/customizing/#substituting-a-custom-user-model
 
 AUTH_USER_MODEL = "members.Member"
-LOGIN_URL = "members:login"
+LOGIN_URL = "auth:login"
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
 
@@ -158,7 +156,15 @@ STATIC_HOST = env("DJANGO_STATIC_HOST", default="")
 STATIC_ROOT = env("DJANGO_STATIC_ROOT", default=BASE_DIR / "static_files")
 STATIC_URL = f"{STATIC_HOST}/static/"
 # https://whitenoise.evans.io/en/latest/django.html#add-compression-and-caching-support
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        # https://whitenoise.readthedocs.io/en/latest/django.html#add-compression-and-caching-support
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 
 # Media files (user uploaded)
