@@ -5,9 +5,27 @@ version = "{{cookiecutter.version}}"
 authors = [
   "{{cookiecutter.author}} <{{cookiecutter.email}}>",
 ]
-license = "{{cookiecutter.license}}"
+license = {file = "LICENSE"}
 readme = "README.md"
 requires-python = ">=3.9"
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Framework :: Django",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.urls]
+Documentation = "https://github.com/unknown/demo-project#readme"
+Issues = "https://github.com/unknown/demo-project/issues"
+Source = "https://github.com/unknown/demo-project"
 
 [tool.black]
 extend-exclude = "migrations/"
