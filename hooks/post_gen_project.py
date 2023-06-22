@@ -19,7 +19,7 @@ def install_node_dependencies():
 
 
 def link_bootstrap():
-    print(INFO + "Linking Bootstrap" + TERMINATOR)
+    print(f"{INFO}Linking Bootstrap{TERMINATOR}")
     SOURCE_DIR = os.path.join(NODE_DIR, "bootstrap", "dist")
     files = [
         os.path.join("css", "bootstrap.min.css"),
@@ -36,7 +36,7 @@ def link_bootstrap():
 
 
 def link_bootstrap_icons():
-    print(INFO + "Linking Bootstrap Icons" + TERMINATOR)
+    print(f"{INFO}Linking Bootstrap Icons{TERMINATOR}")
     SOURCE_DIR = os.path.join(NODE_DIR, "bootstrap-icons", "font")
     os.mkdir(os.path.join(STATIC_DIR, "fonts", "fonts"))
     files = [
@@ -64,7 +64,7 @@ def main():
     install_node_dependencies()
     link_bootstrap()
     link_bootstrap_icons()
-    print(SUCCESS + "Project initialized, keep up the good work!" + TERMINATOR)
+    print(f"{SUCCESS}Project initialized, keep up the good work!{TERMINATOR}")
 
 
 if __name__ == "__main__":
