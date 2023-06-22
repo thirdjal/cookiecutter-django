@@ -2,6 +2,7 @@
   "project": "Django Project",
   "slug": "{{ cookiecutter.project.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
   "description": "A super awesome Django project.",
+  "keywords": "python django",
   "author": "John Lawrence",
   "email": "john@cjvn.net",
   "license": [
