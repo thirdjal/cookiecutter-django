@@ -19,7 +19,6 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.http import JsonResponse
 from django.urls import include, path
-from django.views import defaults
 from django.views.generic import TemplateView
 
 
@@ -41,22 +40,19 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
+    from django.views.defaults import (
+        bad_request,
+        page_not_found,
+        permission_denied,
+        server_error,
+    )
+
     urlpatterns = [
         # Debug error webpages
-        path(
-            "400/", defaults.bad_request, kwargs={"exception": Exception("Bad Request")}
-        ),
-        path(
-            "403/",
-            defaults.permission_denied,
-            kwargs={"exception": Exception("Permission Denied")},
-        ),
-        path(
-            "404/",
-            defaults.page_not_found,
-            kwargs={"exception": Exception("Page Not Found")},
-        ),
-        path("500/", defaults.server_error),
+        path("400/", bad_request, kwargs={"exception": Exception("Bad Request")}),
+        path("403/", permission_denied, kwargs={"exception": Exception("Forbidden")}),
+        path("404/", page_not_found, kwargs={"exception": Exception("Not Found")}),
+        path("500/", server_error),
     ] + urlpatterns
 
     if "debug_toolbar" in settings.INSTALLED_APPS:
