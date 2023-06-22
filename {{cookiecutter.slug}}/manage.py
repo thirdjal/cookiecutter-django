@@ -6,18 +6,17 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    argv = sys.argv
     try:
-        command = argv[0]
+        command = sys.argv[1]
     except IndexError:
         command = "help"
 
     if command == "test":
-        default = "{{cookiecutter.slug}}.settings.test"
+        default_settings_module = "{{cookiecutter.slug}}.settings.test"
     else:
-        default = "{{cookiecutter.slug}}.settings.local"
+        default_settings_module = "{{cookiecutter.slug}}.settings.local"
 
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", default)
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", default_settings_module)
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
@@ -26,7 +25,7 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
-    execute_from_command_line(argv)
+    execute_from_command_line(sys.argv)
 
 
 if __name__ == "__main__":
